@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — NelTech Space</title>
+  <meta name="description" content="Contact NelTech Space — c44553199@gmail.com | 0799857004 / 0740301843" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <div class="logo-mark" aria-hidden="true">N</div>
+        <div>
+          <div class="brand-name">NelTech Space</div>
+          <div class="brand-sub">Building Smart Digital Solutions</div>
+        </div>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <button class="hambtn" id="hambtn" aria-label="Toggle menu">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-header">
+      <h1>Contact NelTech Space</h1>
+      <p class="muted">Tell us about your project or request a quote. We'll respond as soon as possible.</p>
+    </section>
+
+    <section class="contact-grid">
+      <div class="contact-card">
+        <h3>Quick contact</h3>
+        <p>Email: <a href="mailto:c44553199@gmail.com">c44553199@gmail.com</a></p>
+        <p>Phone: <a href="tel:+254799857004">0799857004</a> / <a href="tel:+254740301843">0740301843</a></p>
+        <p>Prefer WhatsApp? Use the phone numbers above with WhatsApp.</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Send a message</h3>
+        <form id="contactForm">
+          <label>
+            Your name
+            <input type="text" name="name" id="name" required />
+          </label>
+
+          <label>
+            Your email
+            <input type="email" name="email" id="email" required />
+          </label>
+
+          <label>
+            Project summary
+            <textarea name="message" id="message" rows="6" required></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button class="btn" type="submit">Send message</button>
+            <button class="btn btn-ghost" type="button" id="mailtoBtn">Open email client</button>
+          </div>
+
+          <p class="muted small">Note: This form uses your email client to send messages (no server). If your browser cannot open the mail client, use the email above.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>NelTech Space</strong>
+        <div class="muted">Building Smart Digital Solutions</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:c44553199@gmail.com">c44553199@gmail.com</a><br />
+        <a href="tel:+254799857004">0799857004</a> / <a href="tel:+254740301843">0740301843</a>
+      </div>
+    </div>
+    <div class="container copy">© <span id="year-3"></span> NelTech Space — All rights reserved.</div>
+  </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <script>
+        // Initialize EmailJS with your user ID
+        emailjs.init("kxmleXLMPku6Kj1x4"); // Replace YOUR_USER_ID with your actual User ID from EmailJS
+
+        // Add an event listener to the form
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Collect form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Prepare the data to send
+            const templateParams = {
+                name: name,
+                email: email,
+                message: message
+            };
+
+            // Send the email using EmailJS
+            emailjs.send('service_xielcig', 'template_cm1xdrm', templateParams)
+                .then(function(response) {
+                    alert('Message sent successfully!'); // Success message
+                    console.log('SUCCESS!', response.status, response.text);
+                }, function(error) {
+                    alert('Failed to send the message. Please try again.'); // Error message
+                    console.error('FAILED...', error);
+                });
+        });
+    </script>
+
+</html>
